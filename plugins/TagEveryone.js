@@ -5,18 +5,18 @@ class TagEveryone {
   #membersLimit;
   #trigger;
 
-constructor(config = {}) {
+  constructor(config = {}) {
     this.#membersLimit = config.membersLimit || 100;
     this.#trigger = config.trigger || "all";
-}
+  }
 
-init(socket, getText, sendMessage) {
+  init(socket, getText, sendMessage) {
     this.#socket = socket;
     this.#getText = getText;
     this.#sendMessage = sendMessage;
-}
+  }
 
-async process(key, message) {
+  async process(key, message) {
     const text = this.#getText(key, message);
 
     if (!text.toLowerCase().includes("@" + this.#trigger)) return;
